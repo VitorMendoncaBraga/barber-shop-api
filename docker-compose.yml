@@ -1,0 +1,12 @@
+
+version: '3'
+
+services:
+  barber-shop-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=doker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=barber-shop

@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  Confirmed
+  Cancelled
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String
+  password  String
+  createdAt DateTime @default(now())
+
+  appointments Appointment[]
+  orders       Order[]
+}
+
+model Barber {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  appointments Appointment[]
+}
+
+model Appointment {
+  id        String    @id @default(uuid())
+  userId    String
+  barberId  String
+  date      DateTime
+  status    Status    @default(Confirmed)
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id])
+  barber    Barber    @relation(fields: [barberId], references: [id])
+  services  Service[]
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Float
+  createdAt   DateTime @default(now())
+  stock       Int
+  orders      Order[]
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Float
+  createdAt   DateTime @default(now())
+
+  appointments Appointment[]
+}
+
+model Order {
+  id        String    @id @default(uuid())
+  userId    String
+  total     Float
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id])
+  status    Status    @default(Confirmed)
+  products  Product[]
+}
