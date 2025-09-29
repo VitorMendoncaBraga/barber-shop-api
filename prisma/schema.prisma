@@ -15,8 +15,19 @@ datasource db {
 }
 
 enum Status {
-  Confirmed
-  Cancelled
+  confirmed
+  cancelled
+}
+
+enum BarberStatus {
+  available
+  unavailable
+}
+
+enum Role {
+  admin
+  barber
+  client
 }
 
 model User {
@@ -26,17 +37,19 @@ model User {
   phone     String
   password  String
   createdAt DateTime @default(now())
+  role      Role    @default(client)
 
   appointments Appointment[]
   orders       Order[]
 }
 
 model Barber {
-  id        String   @id @default(uuid())
+  id        String       @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String       @unique
   password  String
-  createdAt DateTime @default(now())
+  createdAt DateTime     @default(now())
+  status    BarberStatus @default(available)
 
   appointments Appointment[]
 }
@@ -46,7 +59,7 @@ model Appointment {
   userId    String
   barberId  String
   date      DateTime
-  status    Status    @default(Confirmed)
+  status    Status    @default(confirmed)
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id])
   barber    Barber    @relation(fields: [barberId], references: [id])
@@ -79,6 +92,6 @@ model Order {
   total     Float
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id])
-  status    Status    @default(Confirmed)
+  status    Status    @default(confirmed)
   products  Product[]
 }
