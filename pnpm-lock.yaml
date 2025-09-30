@@ -32,6 +32,9 @@ importers:
       tsx:
         specifier: ^4.20.6
         version: 4.20.6
+      zod:
+        specifier: ^4.1.11
+        version: 4.1.11
     devDependencies:
       '@vitest/coverage-v8':
         specifier: ^3.2.4
@@ -1192,6 +1195,9 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
+
 snapshots:
 
   '@ampproject/remapping@2.3.0':
@@ -2270,3 +2276,5 @@ snapshots:
       strip-ansi: 7.1.2
 
   xtend@4.0.2: {}
+
+  zod@4.1.11: {}
