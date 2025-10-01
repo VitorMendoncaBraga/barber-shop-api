@@ -1,0 +1,30 @@
+import { Barber } from "../generated/prisma";
+import { BarbersRepository } from "../repositories/barbersRepository";
+import { ResourceNotFound } from "./errors/ResourceNotFound";
+
+interface DeleteBarberServiceRequest{
+    id: string
+}
+
+interface DeleteBarberServiceResponse{
+    barberList: Barber[]
+}
+
+export class DeleteBarberService{
+    private barberRepository: BarbersRepository
+
+    constructor(barberRepository: BarbersRepository){ 
+        this.barberRepository = barberRepository
+    }
+
+    async execute({id}: DeleteBarberServiceRequest): Promise<DeleteBarberServiceResponse>{
+        const barber = await this.barberRepository.findById(id)
+        if(!barber){
+            throw new ResourceNotFound()
+        }
+        const barberList = await this.barberRepository.delete(id)
+        return {
+            barberList
+        }
+    }
+}

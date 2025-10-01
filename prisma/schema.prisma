@@ -27,7 +27,6 @@ enum BarberStatus {
 enum Role {
   admin
   barber
-  client
 }
 
 model User {
@@ -37,7 +36,7 @@ model User {
   phone     String
   password  String
   createdAt DateTime @default(now())
-  role      Role    @default(client)
+  
 
   appointments Appointment[]
   orders       Order[]
@@ -48,8 +47,10 @@ model Barber {
   name      String
   email     String       @unique
   password  String
+  phone     String
   createdAt DateTime     @default(now())
   status    BarberStatus @default(available)
+  role      Role    @default(barber)
 
   appointments Appointment[]
 }

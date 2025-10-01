@@ -1,12 +1,12 @@
 import {describe, it, expect, beforeEach} from 'vitest'
-import { IUsersRepository } from '../repositories/usersRepository'
+import { UsersRepository } from '../repositories/usersRepository'
 import { AuthenticateService } from './authenticate'
 import { InMemoryUserRepository } from '../repositories/in-memory/in-memory-user-repository'
 import { randomUUID } from 'node:crypto'
 import { hash } from 'bcryptjs'
 import { InvalidCredentials } from './errors/InvalidCredentials'
 
-let userRepository: IUsersRepository
+let userRepository: UsersRepository
 let authenticateService: AuthenticateService
 
 describe("Authenticate service", () => {

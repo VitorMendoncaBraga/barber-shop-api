@@ -2,21 +2,23 @@
 
 RF01 - Gestão de Autenticação e Perfis
 
-[] Deve ser possível cadastrar um usuário (cliente).
+[X] Deve ser possível cadastrar um usuário (cliente).
 
 [ ] Deve ser possível realizar login e logout.
 
 [ ] Deve ser possível recuperar a senha (ex: por e-mail).
 
-[ ] O cliente deve poder editar suas próprias informações de perfil (nome, telefone).
+[X] O cliente deve poder editar suas próprias informações de perfil (nome, telefone).
 
-[ ] - Um barbeiro deve poder visualizar sua agenda
+
 
 RF02 - Gestão de Profissionais (Funcionários)
 
-[] Deve ser possível cadastrar profissionais.
+[X] Deve ser possível cadastrar profissionais.
 
-[ ] Deve ser possível editar e inativar profissionais.
+[X] Deve ser possível editar e inativar profissionais.
+
+[X] Deve ser possível excluir profissioanais.
 
 
 RF03 - Gestão de Serviços
@@ -53,13 +55,15 @@ O cliente escolhe o serviço, o profissional, a data e o horário disponível.
 
 [ ] O profissional deve poder visualizar seu próprio histórico de atendimentos.
 
+[ ] - Um barbeiro deve poder visualizar sua agenda
+
 RF06 - Visualização da Agenda
 
-[] Deve ser possível visualizar a agenda dos funcionários.
+[] -  Deve ser possível visualizar a agenda dos funcionários.
 
-O profissional visualiza sua própria agenda (diária, semanal, mensal).
+[] - O profissional visualiza sua própria agenda (diária, semanal, mensal).
 
-Um administrador pode visualizar a agenda de todos os profissionais.
+[] - Um administrador pode visualizar a agenda de todos os profissionais.
 
 RF07 - Painel Administrativo
 

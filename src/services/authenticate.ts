@@ -1,5 +1,5 @@
 import { compare } from "bcryptjs";
-import { IUsersRepository } from "../repositories/usersRepository";
+import { UsersRepository } from "../repositories/usersRepository";
 import { InvalidCredentials } from "./errors/InvalidCredentials";
 import fastify from "fastify";
 import { User } from "../generated/prisma";
@@ -14,9 +14,9 @@ interface AuthenticateServiceResponse{
 }
 
 export class AuthenticateService{
-    private usersRepository: IUsersRepository
+    private usersRepository: UsersRepository
 
-    constructor(userRepository: IUsersRepository){
+    constructor(userRepository: UsersRepository){
         this.usersRepository = userRepository
     }
 

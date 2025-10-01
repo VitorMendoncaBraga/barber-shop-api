@@ -1,10 +1,10 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import { IUsersRepository } from '../repositories/usersRepository'
+import { UsersRepository } from '../repositories/usersRepository'
 import { RegisterService } from './register'
 import { InMemoryUserRepository } from '../repositories/in-memory/in-memory-user-repository'
 import { UserAlreadyExists } from './errors/UserAlreadyExists'
 
-let userRepository: IUsersRepository
+let userRepository: UsersRepository
 let registerService: RegisterService
 
 describe("Register Service", () => {

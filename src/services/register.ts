@@ -1,5 +1,5 @@
 import { User } from "../generated/prisma";
-import { IUsersRepository } from "../repositories/usersRepository";
+import { UsersRepository } from "../repositories/usersRepository";
 import { hash } from 'bcryptjs';
 import { UserAlreadyExists } from "./errors/UserAlreadyExists";
 
@@ -15,9 +15,9 @@ interface RegisterResponse {
 }
 
 export class RegisterService {
-    private userRepostory: IUsersRepository;
+    private userRepostory: UsersRepository;
 
-    constructor(userRepository: IUsersRepository) {
+    constructor(userRepository: UsersRepository) {
         this.userRepostory = userRepository;
     }
 
