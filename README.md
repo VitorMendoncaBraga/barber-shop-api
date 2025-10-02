@@ -23,11 +23,11 @@ RF02 - Gestão de Profissionais (Funcionários)
 
 RF03 - Gestão de Serviços
 
-[ ] Deve ser possível cadastrar os serviços oferecidos (ex: "Corte Masculino", "Barba", "Sobrancelha").
+[X] Deve ser possível cadastrar os serviços oferecidos (ex: "Corte Masculino", "Barba", "Sobrancelha").
 
-[ ] Cada serviço deve ter um nome, descrição, duração em minutos e preço.
+[X] Cada serviço deve ter um nome, descrição e preço.
 
-[ ] Deve ser possível editar e deletar serviços.
+[X] Deve ser possível editar e deletar serviços.
 
 RF04 - Gestão de Produtos e Vendas
 

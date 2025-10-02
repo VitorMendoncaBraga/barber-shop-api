@@ -6,9 +6,9 @@ export class InMemoryServiceRepository implements ServicesRepository{
 
     private items: Service[] = []
 
-    async create({ description, name, price }: Prisma.ServiceUncheckedCreateInput) {
+    async create({ id, description, name, price }: Prisma.ServiceUncheckedCreateInput) {
         const service: Service = {
-            id: randomUUID(),
+            id: id || randomUUID(),
             createdAt: new Date(),
             description,
             name,
@@ -31,7 +31,7 @@ export class InMemoryServiceRepository implements ServicesRepository{
     }
 
     async delete(id: string) {
-        this.items.filter((service) => service.id != id)
+        return this.items.filter((service) => service.id != id)
     }
 
     async edit({ id, description, name, price }: Prisma.ServiceUncheckedCreateInput) {
@@ -44,5 +44,14 @@ export class InMemoryServiceRepository implements ServicesRepository{
         }
 
         return this.items[serviceIndex] 
+    }
+
+    async findById(id: string): Promise<Service | null> {
+        const service = this.items.find((service) => service.id == id)
+        if(!service){
+            return null
+        }
+
+        return service
     }
 }
