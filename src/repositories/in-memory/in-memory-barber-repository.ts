@@ -62,4 +62,13 @@ export class InMemoryBarberRepository implements BarbersRepository {
   async delete(id: string) {
     return this.items.filter((item) => item.id != id)
   }
+
+  async findMany(page: number, query: string | undefined): Promise<Barber[]> {
+    if(query){
+       return this.items.filter((barber) => barber.name.toLowerCase().includes(query.toLowerCase())).slice((page - 1) * 20, page * 20) 
+    }  
+
+    return this.items.slice((page - 1) * 20, page * 20)
+
+  }
 }

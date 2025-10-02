@@ -8,4 +8,5 @@ export interface BarbersRepository{
     findById(id: string): Promise<Barber | null>
     edit({id,email,name,phone, status}: EditBarberServiceRequest): Promise<Barber>
     delete(id: string): Promise<Barber[]>
+    findMany(page: number,query: string | undefined): Promise<Barber[]>
 }
