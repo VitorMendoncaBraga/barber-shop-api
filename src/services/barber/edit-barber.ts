@@ -1,7 +1,7 @@
 import { hash } from "bcryptjs";
-import { Barber, Prisma } from "../generated/prisma";
-import { BarbersRepository } from "../repositories/barbersRepository";
-import { ResourceNotFound } from "./errors/ResourceNotFound";
+import { Barber, Prisma } from "../../generated/prisma";
+import { BarbersRepository } from "../../repositories/barbers-repository";
+import { ResourceNotFound } from "../errors/ResourceNotFound";
 
 export interface EditBarberServiceRequest {
   id: string;

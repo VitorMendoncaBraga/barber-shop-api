@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { InMemoryServiceRepository } from "../repositories/in-memory/in-memory-service-repository";
-import { ServicesRepository } from "../repositories/servicesRepository";
-import { DeleteServiceUseCase } from "./delete-service";
-import { ResourceNotFound } from "./errors/ResourceNotFound";
+import { InMemoryServiceRepository } from "../../../repositories/in-memory/in-memory-service-repository";
+import { ServicesRepository } from "../../../repositories/services-repository";
+import { DeleteServiceUseCase } from "../delete-service";
+import { ResourceNotFound } from "../../errors/ResourceNotFound";
 let servicesRepository: ServicesRepository;
 let deleteServiceUseCase: DeleteServiceUseCase;
 

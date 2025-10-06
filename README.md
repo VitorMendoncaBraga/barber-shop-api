@@ -29,13 +29,15 @@ RF03 - Gestão de Serviços
 
 [X] Deve ser possível editar e deletar serviços.
 
+[X] Deve ser possível ver os serviços.
+
 RF04 - Gestão de Produtos e Vendas
 
-[] Deve ser possível cadastrar produtos (com nome, preço, descrição e quantidade em estoque).
+[X] Deve ser possível cadastrar produtos (com nome, preço, descrição e quantidade em estoque).
 
-[] Deve ser possível editar produtos.
+[X] Deve ser possível editar produtos.
 
-[] Deve ser possível deletar produtos.
+[X] Deve ser possível deletar produtos.
 
 [] O cliente deve poder visualizar um carrinho de produtos.
 

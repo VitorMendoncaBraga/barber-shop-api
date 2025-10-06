@@ -1,7 +1,7 @@
-import { User } from "../generated/prisma";
-import { UsersRepository } from "../repositories/usersRepository";
+import { User } from "../../generated/prisma";
+import { UsersRepository } from "../../repositories/users-repository";
 import { hash } from 'bcryptjs';
-import { UserAlreadyExists } from "./errors/UserAlreadyExists";
+import { UserAlreadyExists } from "../errors/UserAlreadyExists";
 
 interface RegisterRequest {
     name: string;

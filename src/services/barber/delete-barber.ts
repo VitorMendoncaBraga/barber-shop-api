@@ -1,6 +1,6 @@
-import { Barber } from "../generated/prisma";
-import { BarbersRepository } from "../repositories/barbersRepository";
-import { ResourceNotFound } from "./errors/ResourceNotFound";
+import { Barber } from "../../generated/prisma";
+import { BarbersRepository } from "../../repositories/barbers-repository";
+import { ResourceNotFound } from "../errors/ResourceNotFound";
 
 interface DeleteBarberServiceRequest{
     id: string

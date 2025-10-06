@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { Prisma, Service } from "../../generated/prisma";
-import { ServicesRepository } from "../servicesRepository";
+import { Prisma, Product, Service } from "../../generated/prisma";
+import { ServicesRepository } from "../services-repository";
 
 export class InMemoryServiceRepository implements ServicesRepository{
 
@@ -31,7 +31,8 @@ export class InMemoryServiceRepository implements ServicesRepository{
     }
 
     async delete(id: string) {
-        return this.items.filter((service) => service.id != id)
+        this.items = this.items.filter((service) => service.id != id)
+        return this.items
     }
 
     async edit({ id, description, name, price }: Prisma.ServiceUncheckedCreateInput) {
@@ -53,5 +54,13 @@ export class InMemoryServiceRepository implements ServicesRepository{
         }
 
         return service
+    }
+
+    async findMany(page: number, query?: string): Promise<Service[]> {
+        if(query){
+            return this.items.filter((item) => item.name.includes(query)).slice((page - 1) * 20, page * 20)
+        }
+
+        return this.items.slice((page - 1) * 20, page  * 20)
     }
 }

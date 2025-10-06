@@ -1,8 +1,8 @@
 import { compare } from "bcryptjs";
-import { UsersRepository } from "../repositories/usersRepository";
-import { InvalidCredentials } from "./errors/InvalidCredentials";
+import { UsersRepository } from "../../repositories/users-repository";
+import { InvalidCredentials } from "../errors/InvalidCredentials";
 import fastify from "fastify";
-import { User } from "../generated/prisma";
+import { User } from "../../generated/prisma";
 
 interface AuthenticateServiceRequest{
     email: string,

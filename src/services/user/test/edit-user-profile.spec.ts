@@ -1,9 +1,9 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import { UsersRepository } from '../repositories/usersRepository'
+import { UsersRepository } from '../../../repositories/users-repository'
 
-import { InMemoryUserRepository } from '../repositories/in-memory/in-memory-user-repository'
-import { UserAlreadyExists } from './errors/UserAlreadyExists'
-import { EditUserProfileService } from './edit-user-profile'
+import { InMemoryUserRepository } from '../../../repositories/in-memory/in-memory-user-repository'
+import { UserAlreadyExists } from '../../errors/UserAlreadyExists'
+import { EditUserProfileService } from '../edit-user-profile'
 import { hash } from 'bcryptjs'
 
 let userRepository: UsersRepository

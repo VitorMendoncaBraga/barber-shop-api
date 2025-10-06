@@ -1,6 +1,6 @@
-import { Barber } from "../generated/prisma";
-import { BarbersRepository } from "../repositories/barbersRepository";
-import { BarberAlreadyExists } from "./errors/BarberAlreadyExists";
+import { Barber } from "../../generated/prisma";
+import { BarbersRepository } from "../../repositories/barbers-repository";
+import { BarberAlreadyExists } from "../errors/BarberAlreadyExists";
 
 interface CreateBarberServiceRequest {
   name: string;

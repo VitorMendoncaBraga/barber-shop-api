@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 import { Prisma, Barber } from "../../generated/prisma";
-import { BarbersRepository } from "../barbersRepository";
-import { EditBarberServiceRequest } from "../../services/edit-barber";
+import { BarbersRepository } from "../barbers-repository";
+import { EditBarberServiceRequest } from "../../services/barber/edit-barber";
 
 export class InMemoryBarberRepository implements BarbersRepository {
   private items: Barber[] = [];
@@ -60,7 +60,8 @@ export class InMemoryBarberRepository implements BarbersRepository {
   }
 
   async delete(id: string) {
-    return this.items.filter((item) => item.id != id)
+    this.items =  this.items.filter((item) => item.id != id)
+    return this.items
   }
 
   async findMany(page: number, query: string | undefined): Promise<Barber[]> {

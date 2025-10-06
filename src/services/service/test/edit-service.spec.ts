@@ -1,10 +1,10 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import {InMemoryServiceRepository} from '../repositories/in-memory/in-memory-service-repository'
-import { CreateBarberService } from './create-barber'
-import { BarberAlreadyExists } from './errors/BarberAlreadyExists'
-import { ServicesRepository } from '../repositories/servicesRepository'
-import { EditServiceUseCase } from './edit-service'
-import { ResourceNotFound } from './errors/ResourceNotFound'
+import {InMemoryServiceRepository} from '../../../repositories/in-memory/in-memory-service-repository'
+import { CreateBarberService } from '../../barber/create-barber'
+import { BarberAlreadyExists } from '../../errors/BarberAlreadyExists'
+import { ServicesRepository } from '../../../repositories/services-repository'
+import { EditServiceUseCase } from '../edit-service'
+import { ResourceNotFound } from '../../errors/ResourceNotFound'
 
 let servicesRepository: ServicesRepository
 let editServiceService: EditServiceUseCase

@@ -1,5 +1,5 @@
-import { Barber } from "../generated/prisma";
-import { BarbersRepository } from "../repositories/barbersRepository";
+import { Barber } from "../../generated/prisma";
+import { BarbersRepository } from "../../repositories/barbers-repository";
 
 interface GetBarbersServiceRequest{
     page: number,

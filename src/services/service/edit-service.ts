@@ -1,6 +1,6 @@
-import { Service } from "../generated/prisma";
-import { ServicesRepository } from "../repositories/servicesRepository";
-import { ResourceNotFound } from "./errors/ResourceNotFound";
+import { Service } from "../../generated/prisma";
+import { ServicesRepository } from "../../repositories/services-repository";
+import { ResourceNotFound } from "../errors/ResourceNotFound";
 
 export interface EditServiceUseCaseRequest{
     id: string

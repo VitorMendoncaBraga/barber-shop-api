@@ -1,10 +1,10 @@
 import {describe, it, expect, beforeEach} from 'vitest'
-import { UsersRepository } from '../repositories/usersRepository'
-import { AuthenticateService } from './authenticate'
-import { InMemoryUserRepository } from '../repositories/in-memory/in-memory-user-repository'
+import { UsersRepository } from '../../../repositories/users-repository'
+import { AuthenticateService } from '../authenticate'
+import { InMemoryUserRepository } from '../../../repositories/in-memory/in-memory-user-repository'
 import { randomUUID } from 'node:crypto'
 import { hash } from 'bcryptjs'
-import { InvalidCredentials } from './errors/InvalidCredentials'
+import { InvalidCredentials } from '../../errors/InvalidCredentials'
 
 let userRepository: UsersRepository
 let authenticateService: AuthenticateService

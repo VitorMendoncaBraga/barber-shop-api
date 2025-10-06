@@ -1,9 +1,9 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import {InMemoryServiceRepository} from '../repositories/in-memory/in-memory-service-repository'
-import { CreateBarberService } from './create-barber'
-import { BarberAlreadyExists } from './errors/BarberAlreadyExists'
-import { ServicesRepository } from '../repositories/servicesRepository'
-import { CreateServicesUseCase } from './create-services'
+import {InMemoryServiceRepository} from '../../../repositories/in-memory/in-memory-service-repository'
+import { CreateBarberService } from '../../barber/create-barber'
+import { BarberAlreadyExists } from '../../errors/BarberAlreadyExists'
+import { ServicesRepository } from '../../../repositories/services-repository'
+import { CreateServicesUseCase } from '../create-services'
 
 let servicesRepository: ServicesRepository
 let createServiceService: CreateServicesUseCase

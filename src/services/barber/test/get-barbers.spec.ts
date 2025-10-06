@@ -1,7 +1,7 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import { InMemoryBarberRepository } from '../repositories/in-memory/in-memory-barber-repository'
-import { BarbersRepository } from '../repositories/barbersRepository'
-import { GetBarbersService } from './get-barbers'
+import { InMemoryBarberRepository } from '../../../repositories/in-memory/in-memory-barber-repository'
+import { BarbersRepository } from '../../../repositories/barbers-repository'
+import { GetBarbersService } from '../get-barbers'
 import { hash } from 'bcryptjs'
 
 let barbersRepository: BarbersRepository

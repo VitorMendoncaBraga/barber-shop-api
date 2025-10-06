@@ -1,6 +1,6 @@
-import { User } from "../generated/prisma";
-import { UsersRepository } from "../repositories/usersRepository";
-import { ResourceNotFound } from "./errors/ResourceNotFound";
+import { User } from "../../generated/prisma";
+import { UsersRepository } from "../../repositories/users-repository";
+import { ResourceNotFound } from "../errors/ResourceNotFound";
 
 interface EditUserServiceProfileRequest {
   id: string;

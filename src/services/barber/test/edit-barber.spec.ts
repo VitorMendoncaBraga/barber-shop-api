@@ -1,9 +1,9 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import { InMemoryBarberRepository } from '../repositories/in-memory/in-memory-barber-repository'
-import { UserAlreadyExists } from './errors/UserAlreadyExists'
-import { BarbersRepository } from '../repositories/barbersRepository'
-import { BarberAlreadyExists } from './errors/BarberAlreadyExists'
-import { EditBarberService } from './edit-barber'
+import { InMemoryBarberRepository } from '../../../repositories/in-memory/in-memory-barber-repository'
+import { UserAlreadyExists } from '../../errors/UserAlreadyExists'
+import { BarbersRepository } from '../../../repositories/barbers-repository'
+import { BarberAlreadyExists } from '../../errors/BarberAlreadyExists'
+import { EditBarberService } from '../edit-barber'
 import { hash } from 'bcryptjs'
 
 let barbersRepository: BarbersRepository

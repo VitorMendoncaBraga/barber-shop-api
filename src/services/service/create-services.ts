@@ -1,5 +1,5 @@
-import { Service } from "../generated/prisma";
-import { ServicesRepository } from "../repositories/servicesRepository";
+import { Service } from "../../generated/prisma";
+import { ServicesRepository } from "../../repositories/services-repository";
 
 interface CreateServicesServiceRequest{
     description: string,

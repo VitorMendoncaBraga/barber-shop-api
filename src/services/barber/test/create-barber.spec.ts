@@ -1,9 +1,9 @@
 import {beforeEach, describe, expect, it} from 'vitest'
-import { InMemoryBarberRepository } from '../repositories/in-memory/in-memory-barber-repository'
-import { UserAlreadyExists } from './errors/UserAlreadyExists'
-import { BarbersRepository } from '../repositories/barbersRepository'
-import { CreateBarberService } from './create-barber'
-import { BarberAlreadyExists } from './errors/BarberAlreadyExists'
+import { InMemoryBarberRepository } from '../../../repositories/in-memory/in-memory-barber-repository'
+import { UserAlreadyExists } from '../../errors/UserAlreadyExists'
+import { BarbersRepository } from '../../../repositories/barbers-repository'
+import { CreateBarberService } from '../create-barber'
+import { BarberAlreadyExists } from '../../errors/BarberAlreadyExists'
 
 let barbersRepository: BarbersRepository
 let createBarberService: CreateBarberService

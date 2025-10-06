@@ -1,5 +1,5 @@
 import type { Prisma, Barber } from "../generated/prisma/index.js";
-import { EditBarberServiceRequest } from "../services/edit-barber.js";
+import { EditBarberServiceRequest } from "../services/barber/edit-barber.js";
 
 
 export interface BarbersRepository{
@@ -9,4 +9,5 @@ export interface BarbersRepository{
     edit({id,email,name,phone, status}: EditBarberServiceRequest): Promise<Barber>
     delete(id: string): Promise<Barber[]>
     findMany(page: number,query: string | undefined): Promise<Barber[]>
+    
 }
