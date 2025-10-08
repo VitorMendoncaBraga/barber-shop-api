@@ -21,6 +21,7 @@ export class EditServiceUseCase{
 
     async execute({id,description,name,price}: EditServiceUseCaseRequest): Promise<EditServiceUseCaseResponse>{
         const serviceExists = await this.serviceRepository.findById(id)
+        
         if(!serviceExists){
             throw new ResourceNotFound()
         }

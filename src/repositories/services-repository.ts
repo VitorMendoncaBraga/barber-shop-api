@@ -1,4 +1,4 @@
-import { Prisma,  Service } from "../generated/prisma";
+                                                                                                                                                                                                                                                                                                import { Prisma,  Service } from "../generated/prisma";
 import { EditServiceUseCaseRequest } from "../services/service/edit-service";
 
 export interface ServicesRepository{

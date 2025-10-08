@@ -25,6 +25,7 @@ export class DeleteServiceUseCase{
         }
 
         const services = await this.serviceRepository.delete(id)
+        
         return {
             services,
         }

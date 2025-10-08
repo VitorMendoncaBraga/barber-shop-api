@@ -6,14 +6,14 @@ export class InMemoryAppointmentRepository implements AppointmentRepository {
 
     private items: Appointment[] = []
 
-    async create({id, barberId,date,userId}: Prisma.AppointmentUncheckedCreateInput): Promise<Appointment> {
+    async create({id, barberId,date,userId, services}: Prisma.AppointmentUncheckedCreateInput): Promise<Appointment> {
         const newAppointment : Appointment = {
             barberId,
             userId,
             date: new Date(date),
             createdAt: new Date(),
             id: id || randomUUID(),
-            status: "confirmed"
+            status: "confirmed",
         }   
 
         this.items.push(newAppointment)
