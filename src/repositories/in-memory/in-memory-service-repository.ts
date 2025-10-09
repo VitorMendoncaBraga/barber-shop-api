@@ -4,7 +4,7 @@ import { ServicesRepository } from "../services-repository";
 
 export class InMemoryServiceRepository implements ServicesRepository{
 
-    private items: Service[] = []
+    public items: Service[] = []
 
     async create({ id, description, name, price }: Prisma.ServiceUncheckedCreateInput) {
         const service: Service = {

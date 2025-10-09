@@ -14,8 +14,10 @@ import { hash } from 'node:crypto'
 import { UserDoesntExists } from '../../errors/UserDoesntExists'
 import { BarberDoesntExists } from '../../errors/BarberDoesntExists'
 import { InvalidDate } from '../../errors/InvalidDate'
+import { AppointmentServiceRepository } from '../../../repositories/appointment-service-repository'
+import { InMemoryAppointmentServiceRepository } from '../../../repositories/in-memory/in-memory-appointment-service-repository'
 
-
+let appointmentServiceLinksRepository: AppointmentServiceRepository
 let appointmentRepository: AppointmentRepository
 let barberRepository: BarbersRepository
 let userRepository: UsersRepository
@@ -24,6 +26,7 @@ let createAppointmentService: CreateAppointmentService
 describe("Create service use case", () => {
 
     beforeEach(() => {
+        appointmentServiceLinksRepository = new InMemoryAppointmentServiceRepository()
         appointmentRepository = new InMemoryAppointmentRepository()
         barberRepository = new InMemoryBarberRepository()
         userRepository = new InMemoryUserRepository()
@@ -59,7 +62,10 @@ describe("Create service use case", () => {
             userId: "user-1"
         })
 
+        
+
         expect(appointment.id).toEqual(expect.any(String))
+     
     })
 
     it("should not be able to create a appointment for a unexistent user", async () => {

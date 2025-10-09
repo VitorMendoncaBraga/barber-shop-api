@@ -1,29 +1,34 @@
 import { randomUUID } from "node:crypto";
-import { Prisma, Appointment } from "../../generated/prisma";
-import { AppointmentRepository } from "../appointment-repository";
+import { Prisma, Appointment, AppointmentService, Service } from "../../generated/prisma";
+import { AppointmentRepository, CreateAppointmentData } from "../appointment-repository";
+import { InMemoryServiceRepository } from "./in-memory-service-repository";
+import { InMemoryAppointmentServiceRepository } from "./in-memory-appointment-service-repository";
 
 export class InMemoryAppointmentRepository implements AppointmentRepository {
 
     private items: Appointment[] = []
+  
 
-    async create({id, barberId,date,userId, services}: Prisma.AppointmentUncheckedCreateInput): Promise<Appointment> {
-        const newAppointment : Appointment = {
+    async create({ id, barberId, date, userId, services }: CreateAppointmentData): Promise<Appointment> {
+        const newAppointment: Appointment = {
             barberId,
             userId,
             date: new Date(date),
             createdAt: new Date(),
             id: id || randomUUID(),
             status: "confirmed",
-        }   
+        }
 
         this.items.push(newAppointment)
+
+        
 
         return newAppointment
     }
 
     async cancel(id: string): Promise<Appointment> {
         const appointmentIndex = this.items.findIndex((item) => item.id == id)
-       
+
         this.items[appointmentIndex] = {
             ...this.items[appointmentIndex],
             status: "cancelled"
@@ -32,14 +37,19 @@ export class InMemoryAppointmentRepository implements AppointmentRepository {
         return this.items[appointmentIndex]
     }
 
-    async findById(id: string): Promise<Appointment | null> {
+    async findById(id: string) {
         const appointment = this.items.find((item) => item.id == id)
 
-        if(!appointment){
+        if (!appointment) {
             return null
         }
 
-        return appointment
+    
+
+        return {
+            appointment,
+            
+        }
     }
 
     async findManyByBarberId(id: string, page: number): Promise<Appointment[]> {
