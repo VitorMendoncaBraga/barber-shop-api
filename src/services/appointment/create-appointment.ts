@@ -13,6 +13,10 @@ interface CreateAppointmentServiceRequest{
     userId: string,
     barberId: string,
     date: Date,
+
+    services: {
+        service_id: string
+    }[]
 }
 
 interface CreateAppointmentServiceResponse{
@@ -30,7 +34,7 @@ export class CreateAppointmentService {
         this.userRepository = userRepository
     }
 
-    async execute({barberId,date,userId} : CreateAppointmentServiceRequest): Promise<CreateAppointmentServiceResponse>{
+    async execute({barberId,date,userId, services} : CreateAppointmentServiceRequest): Promise<CreateAppointmentServiceResponse>{
 
         const barberExists = await this.barberRepository.findById(barberId)
         
@@ -50,7 +54,7 @@ export class CreateAppointmentService {
             throw new InvalidDate()
         }
 
-        const appointment = await this.appointmentsRepository.create({barberId,date,userId})
+        const appointment = await this.appointmentsRepository.create({barberId,date,userId, services})
         
 
 

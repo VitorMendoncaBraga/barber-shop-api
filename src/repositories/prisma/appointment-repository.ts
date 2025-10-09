@@ -11,11 +11,9 @@ export class PrismaAppointmentRepository implements AppointmentRepository {
                 date,
 
                 services: {
-                    createMany: {
-                        data: services.map(service => ({
-                            serviceId: service.service_id,
-                        })),
-                    }
+                    create: services.map(service => ({
+                        serviceId: service.service_id,
+                    }))
                 }
 
             }
@@ -44,7 +42,97 @@ export class PrismaAppointmentRepository implements AppointmentRepository {
                 id,
             },
 
-            include: {
+            select: {
+                id: true,
+                date: true,
+                status: true,
+                createdAt: true,
+                barber: {
+                    omit: {
+                        password: true,
+                        role: true,
+                        status: true
+                    }
+                }, 
+                user: {
+                    omit: {
+                        password: true,
+                        createdAt: true
+                    }
+                },
+                services: {
+                    select: {
+                        service: true
+                    }
+                }
+            }
+            
+
+            
+        })
+
+        return appointment
+    }
+
+    async findManyByBarberId(id: string, page: number) {
+        const appointments = prisma.appointment.findMany({
+            where: {
+                barberId: id
+            },
+
+            select: {
+                
+                id: true,
+                date: true,
+                status: true,
+                createdAt: true,
+
+                user: {
+                    omit: {
+                        createdAt: true,
+                        email: true,
+                        password: true,
+                        phone: true
+                    }
+                },
+
+               services: {
+                select: {
+                    service: true
+                },
+               } 
+            },
+
+            orderBy: {
+                date: "desc"
+            },
+
+            skip: (page - 1) * 20,
+            take: 20
+
+
+        })
+        return appointments
+    }
+
+    async findManyByUserId(id: string, page: number) {
+        const appointments = await prisma.appointment.findMany({
+             where: {
+                userId: id
+             },
+
+             select: {
+                id: true,
+                date: true,
+                status: true,
+                createdAt: true,
+
+                services: {
+                    select: {
+                        service: true
+                    }
+                },
+                
                 barber: {
                     omit: {
                         createdAt: true,
@@ -53,22 +141,21 @@ export class PrismaAppointmentRepository implements AppointmentRepository {
                         phone: true,
                         role: true,
                         status: true
-                    }
-                },
-                services: {
-                    include: {
-                        service: true
+
                     }
                 }
-            }
+             },
+
+             orderBy: {
+                date: "desc"
+             },
+
+             skip: (page - 1) * 20,
+             take: 20 
+
+
         })
-    }
 
-    async findManyByBarberId(id: string, page: number): Promise<Appointment[]> {
-
-    }
-
-    async findManyByUserId(id: string, page: number): Promise<Appointment[]> {
-
+        return appointments
     }
 }

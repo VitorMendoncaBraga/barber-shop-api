@@ -1,64 +1,64 @@
-import { randomUUID } from "node:crypto";
-import { Prisma, Appointment, AppointmentService, Service } from "../../generated/prisma";
-import { AppointmentRepository, CreateAppointmentData } from "../appointment-repository";
-import { InMemoryServiceRepository } from "./in-memory-service-repository";
-import { InMemoryAppointmentServiceRepository } from "./in-memory-appointment-service-repository";
+// import { randomUUID } from "node:crypto";
+// import { Prisma, Appointment, AppointmentService, Service } from "../../generated/prisma";
+// import { AppointmentRepository, CreateAppointmentData } from "../appointment-repository";
+// import { InMemoryServiceRepository } from "./in-memory-service-repository";
+// import { InMemoryAppointmentServiceRepository } from "./in-memory-appointment-service-repository";
 
-export class InMemoryAppointmentRepository implements AppointmentRepository {
+// export class InMemoryAppointmentRepository implements AppointmentRepository {
 
-    private items: Appointment[] = []
+//     private items: Appointment[] = []
   
 
-    async create({ id, barberId, date, userId, services }: CreateAppointmentData): Promise<Appointment> {
-        const newAppointment: Appointment = {
-            barberId,
-            userId,
-            date: new Date(date),
-            createdAt: new Date(),
-            id: id || randomUUID(),
-            status: "confirmed",
-        }
+//     async create({ id, barberId, date, userId, services }: CreateAppointmentData) {
+//         const newAppointment: Appointment = {
+//             barberId,
+//             userId,
+//             date: new Date(date),
+//             createdAt: new Date(),
+//             id: id || randomUUID(),
+//             status: "confirmed",
+//         }
 
-        this.items.push(newAppointment)
+//         this.items.push(newAppointment)
 
         
 
-        return newAppointment
-    }
+//         return newAppointment
+//     }
 
-    async cancel(id: string): Promise<Appointment> {
-        const appointmentIndex = this.items.findIndex((item) => item.id == id)
+//     async cancel(id: string): Promise<Appointment> {
+//         const appointmentIndex = this.items.findIndex((item) => item.id == id)
 
-        this.items[appointmentIndex] = {
-            ...this.items[appointmentIndex],
-            status: "cancelled"
-        }
+//         this.items[appointmentIndex] = {
+//             ...this.items[appointmentIndex],
+//             status: "cancelled"
+//         }
 
-        return this.items[appointmentIndex]
-    }
+//         return this.items[appointmentIndex]
+//     }
 
-    async findById(id: string) {
-        const appointment = this.items.find((item) => item.id == id)
+//     async findById(id: string) {
+//         const appointment = this.items.find((item) => item.id == id)
 
-        if (!appointment) {
-            return null
-        }
+//         if (!appointment) {
+//             return null
+//         }
 
     
 
-        return {
-            appointment,
+//         return {
+//             appointment,
             
-        }
-    }
+//         }
+//     }
 
-    async findManyByBarberId(id: string, page: number): Promise<Appointment[]> {
-        const barberAppointments = await this.items.filter((item) => item.barberId == id).slice((page - 1) * 20, page * 20)
-        return barberAppointments
-    }
+//     async findManyByBarberId(id: string, page: number){
+//         const barberAppointments = await this.items.filter((item) => item.barberId == id).slice((page - 1) * 20, page * 20)
+//         return barberAppointments
+//     }
 
-    async findManyByUserId(id: string, page: number): Promise<Appointment[]> {
-        const userAppointments = await this.items.filter((item) => item.userId == id).slice((page - 1) * 20, page * 20)
-        return userAppointments
-    }
-}
+//     async findManyByUserId(id: string, page: number) {
+//         const userAppointments = await this.items.filter((item) => item.userId == id).slice((page - 1) * 20, page * 20)
+//         return userAppointments
+//     }
+// }
