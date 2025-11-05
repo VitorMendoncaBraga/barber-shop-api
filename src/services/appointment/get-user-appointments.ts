@@ -1,4 +1,5 @@
 import { AppointmentRepository, FindManyUserAppointmentsResponse } from "../../repositories/appointment-repository";
+import { UsersRepository } from "../../repositories/users-repository";
 import { ResourceNotFound } from "../errors/ResourceNotFound";
 
 interface GetUserAppointmentsServiceRequest {
@@ -11,10 +12,10 @@ interface GetUserAppointmentsServiceResponse {
 }
 
 export class GetUserAppointmentsService { 
-    constructor(private appointmentRepository: AppointmentRepository){}
+    constructor(private appointmentRepository: AppointmentRepository, private userRepository: UsersRepository){}
     
     async execute({id,page}: GetUserAppointmentsServiceRequest): Promise<GetUserAppointmentsServiceResponse>{
-        const user = await this.appointmentRepository.findById(id)
+        const user = await this.userRepository.findById(id)
 
         if(!user){
             throw new ResourceNotFound()

@@ -31,8 +31,12 @@ export class InMemoryServiceRepository implements ServicesRepository{
     }
 
     async delete(id: string) {
+        const serviceIndex = this.items.findIndex((item) => item.id == id)
+        const service = this.items[serviceIndex]
         this.items = this.items.filter((service) => service.id != id)
-        return this.items
+
+
+        return service
     }
 
     async edit({ id, description, name, price }: Prisma.ServiceUncheckedCreateInput) {

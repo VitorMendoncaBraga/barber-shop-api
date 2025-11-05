@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { Barber } from "../../generated/prisma";
 import { BarbersRepository } from "../../repositories/barbers-repository";
 import { BarberAlreadyExists } from "../errors/BarberAlreadyExists";
@@ -33,7 +34,7 @@ export class CreateBarberService {
     const barber = await this.barbersRepository.create({
       email,
       name,
-      password,
+      password: await hash(password, 10),
       phone,
     });
 

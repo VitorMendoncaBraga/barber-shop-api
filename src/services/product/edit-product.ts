@@ -7,7 +7,8 @@ interface EditProductsServiceRequest {
     name: string,
     description: string,
     price: number,
-    stock: number
+    stock: number,
+    imgURL: string
 }
 
 interface EditProductsServiceResponse { 
@@ -21,7 +22,7 @@ export class EditProductsService {
         this.productRepository = productRepository
     }
 
-    async execute({id,description,name,price,stock}: EditProductsServiceRequest) : Promise <EditProductsServiceResponse> {
+    async execute({id,description,name,price,stock, imgURL}: EditProductsServiceRequest) : Promise <EditProductsServiceResponse> {
 
         const productExists = await this.productRepository.findById(id)
 
@@ -29,7 +30,7 @@ export class EditProductsService {
             throw new ResourceNotFound()
         }
 
-        const product = await this.productRepository.edit(id,name, description,price,stock)
+        const product = await this.productRepository.edit(id,name, description,price,stock, imgURL)
 
         return {
             product

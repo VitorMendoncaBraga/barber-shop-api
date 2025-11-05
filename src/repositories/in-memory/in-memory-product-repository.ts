@@ -21,8 +21,10 @@ export class InMemoryProductRepository implements ProductsRepository {
     }
 
     async delete(id: string) {
+        const productIndex = this.items.findIndex((item) => item.id == id)
+        const product = this.items[productIndex]
         this.items = this.items.filter((item) => item.id != id)
-        return this.items
+        return product
     }   
 
     async edit(id: string, name: string, description: string, price: number, stock: number): Promise<Product> {

@@ -3,6 +3,7 @@ import { InMemoryBarberRepository } from '../../../repositories/in-memory/in-mem
 import { BarbersRepository } from '../../../repositories/barbers-repository'
 import { DeleteBarberService } from '../delete-barber'
 import { hash } from 'bcryptjs'
+import { any } from 'zod'
 
 let barbersRepository: BarbersRepository
 let deleteBarberService: DeleteBarberService
@@ -32,11 +33,11 @@ describe("Delete barber service", () => {
             phone: "1231254245",
         })
 
-        const {barberList} = await deleteBarberService.execute({
+        const {barber} = await deleteBarberService.execute({
             id: "1234",
         })
 
-       expect(barberList).toHaveLength(1)
+       expect(barber.id).toEqual(expect.any(String))
        
     })
 

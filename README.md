@@ -4,7 +4,7 @@ RF01 - Gestão de Autenticação e Perfis
 
 [X] Deve ser possível cadastrar um usuário (cliente).
 
-[ ] Deve ser possível realizar login e logout.
+[X] Deve ser possível realizar login e logout.
 
 [ ] Deve ser possível recuperar a senha (ex: por e-mail).
 
@@ -47,23 +47,23 @@ RF04 - Gestão de Produtos e Vendas
 
 RF05 - Gestão de Agendamentos
 
-[] Deve ser possível marcar um corte (agora chamado de "agendar um serviço").
+[X] Deve ser possível marcar um corte (agora chamado de "agendar um serviço").
 
 O cliente escolhe o serviço, o profissional, a data e o horário disponível.
 
-[] Deve ser possível cancelar um agendamento.
+[X] Deve ser possível cancelar um agendamento.
 
-[] O cliente deve poder visualizar seu histórico de agendamentos.
+[X] O cliente deve poder visualizar seu histórico de agendamentos.
 
-[ ] O profissional deve poder visualizar seu próprio histórico de atendimentos.
+[X] O profissional deve poder visualizar seu próprio histórico de atendimentos.
 
-[ ] - Um barbeiro deve poder visualizar sua agenda
+[X] - Um barbeiro deve poder visualizar sua agenda
 
 RF06 - Visualização da Agenda
 
-[] -  Deve ser possível visualizar a agenda dos funcionários.
+[X] -  Deve ser possível visualizar a agenda dos funcionários.
 
-[] - O profissional visualiza sua própria agenda (diária, semanal, mensal).
+[X] - O profissional visualiza sua própria agenda (diária, semanal, mensal).
 
 [] - Um administrador pode visualizar a agenda de todos os profissionais.
 
@@ -90,10 +90,10 @@ RF07 - Painel Administrativo
 
 [] - Após a finalização de uma compra, o estoque dos produtos vendidos deve ser atualizado (subtraído) automaticamente.
 
-[] - O e-mail utilizado no cadastro de um usuário (cliente ou profissional) deve ser único no sistema.
+[X] - O e-mail utilizado no cadastro de um usuário (cliente ou profissional) deve ser único no sistema.
 
-[] - A senha do usuário deve ter requisitos mínimos de segurança (ex: mínimo de 6 caracteres).
+[X] - A senha do usuário deve ter requisitos mínimos de segurança (ex: mínimo de 6 caracteres).
 
 [] - Usuários do tipo "cliente" não podem acessar o painel administrativo ou a agenda completa de outros profissionais. Apenas suas próprias informações e agendamentos.
 
-[] - Usuário deve ser autenticado via JWT
+[X] - Usuário deve ser autenticado via JWT

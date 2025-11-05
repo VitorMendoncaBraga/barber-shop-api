@@ -1,5 +1,5 @@
 export class UserDoesntExists extends Error {
     constructor(){
-        super("User does not exists.");
+        super("Usuário não existente");
     }
 }

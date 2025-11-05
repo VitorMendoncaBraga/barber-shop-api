@@ -7,7 +7,7 @@ interface DeleteServiceUseCaseRequest{
 }
 
 interface DeleteServiceUseCaseResponse{
-    services: Service[]
+    service: Service
 }
 
 
@@ -18,16 +18,16 @@ export class DeleteServiceUseCase{
     }
 
     async execute({id}: DeleteServiceUseCaseRequest): Promise<DeleteServiceUseCaseResponse>{
-        const service = await this.serviceRepository.findById(id)
+        const serviceExists = await this.serviceRepository.findById(id)
 
-        if(!service){
+        if(!serviceExists){
             throw new ResourceNotFound()
         }
 
-        const services = await this.serviceRepository.delete(id)
+        const service = await this.serviceRepository.delete(id)
         
         return {
-            services,
+            service,
         }
     }
 }

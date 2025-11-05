@@ -7,7 +7,7 @@ interface DeleteBarberServiceRequest{
 }
 
 interface DeleteBarberServiceResponse{
-    barberList: Barber[]
+    barber: Barber
 }
 
 export class DeleteBarberService{
@@ -24,7 +24,7 @@ export class DeleteBarberService{
         }
         const barberList = await this.barberRepository.delete(id)
         return {
-            barberList
+            barber
         }
     }
 }

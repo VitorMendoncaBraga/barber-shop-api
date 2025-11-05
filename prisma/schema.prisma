@@ -17,6 +17,7 @@ datasource db {
 enum Status {
   confirmed
   cancelled
+  concluded
 }
 
 enum BarberStatus {
@@ -78,12 +79,13 @@ model Product {
   price       Float
   createdAt   DateTime @default(now())
   stock       Int
+  imgURL      String
   orders      OrderItem[]
 }
 
 model Service {
   id          String   @id @default(uuid())
-  name        String
+  name        String  @unique
   description String
   price       Float
   createdAt   DateTime @default(now())

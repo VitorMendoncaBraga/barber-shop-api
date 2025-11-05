@@ -7,7 +7,7 @@ interface DeleteProductsServiceRequest {
 }
 
 interface DeleteProductsServiceResponse {
-  products: Product[]
+  product: Product
 }
 
 export class DeleteProductsService {
@@ -19,12 +19,13 @@ export class DeleteProductsService {
 
   async execute({ id }: DeleteProductsServiceRequest): Promise<DeleteProductsServiceResponse> {
     const productExists = await this.productRepository.findById(id)
+    
     if(!productExists){
         throw new ResourceNotFound()
     }
-    const products = await this.productRepository.delete(id);
+    const product = await this.productRepository.delete(id);
     return {
-        products
+        product
     }
   }
 }

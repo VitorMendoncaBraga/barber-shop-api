@@ -1,4 +1,5 @@
 import { AppointmentRepository, FindManyBarberAppointmentsResponse } from "../../repositories/appointment-repository";
+import { BarbersRepository } from "../../repositories/barbers-repository";
 import { ResourceNotFound } from "../errors/ResourceNotFound";
 
 interface GetBarberAppointmentsServiceRequest {
@@ -11,10 +12,10 @@ interface GetBarberAppointmentsServiceResponse {
 }
 
 export class GetBarberAppointmentsService { 
-    constructor(private appointmentRepository: AppointmentRepository){}
+    constructor(private appointmentRepository: AppointmentRepository, private barberRepository: BarbersRepository){}
     
     async execute({id,page}: GetBarberAppointmentsServiceRequest): Promise<GetBarberAppointmentsServiceResponse>{
-        const barber = await this.appointmentRepository.findById(id)
+        const barber = await this.barberRepository.findById(id)
 
         if(!barber){
             throw new ResourceNotFound()

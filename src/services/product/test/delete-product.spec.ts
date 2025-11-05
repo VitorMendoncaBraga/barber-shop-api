@@ -23,11 +23,11 @@ describe("delete product service", () => {
             })
         }
 
-    const { products } = await deleteProductsService.execute({
+    const { product } = await deleteProductsService.execute({
       id: "product-1",
     });
 
-    expect(products).toHaveLength(8)
+    expect(product.id).toEqual(expect.any(String));
    
   });
   

@@ -60,8 +60,10 @@ export class InMemoryBarberRepository implements BarbersRepository {
   }
 
   async delete(id: string) {
+    const deletedBarberIndex = this.items.findIndex((item) => item.id == id)
+    const deletedBarber = this.items[deletedBarberIndex]
     this.items =  this.items.filter((item) => item.id != id)
-    return this.items
+    return deletedBarber
   }
 
   async findMany(page: number, query: string | undefined): Promise<Barber[]> {

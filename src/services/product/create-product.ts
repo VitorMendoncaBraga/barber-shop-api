@@ -6,6 +6,7 @@ interface CreateProductsServiceRequest {
     description: string,
     price: number,
     stock: number
+    imgURL: string
 }
 
 interface CreateProductsServiceResponse { 
@@ -19,8 +20,8 @@ export class CreateProductsService {
         this.productRepository = productRepository
     }
 
-    async execute({description,name,price,stock}: CreateProductsServiceRequest) : Promise<CreateProductsServiceResponse> {
-        const product = await this.productRepository.create({description,name,price,stock})
+    async execute({description,name,price,stock, imgURL}: CreateProductsServiceRequest) : Promise<CreateProductsServiceResponse> {
+        const product = await this.productRepository.create({description,name,price,stock, imgURL})
 
         return {
             product

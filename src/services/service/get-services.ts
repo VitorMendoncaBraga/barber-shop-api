@@ -12,7 +12,7 @@ interface GetServiceUseCaseResponse {
 }
 
 
-export class getServiceUseCase {
+export class GetServicesUseCase {
     private serviceRepository: ServicesRepository
     
     constructor(serviceRepository: ServicesRepository){

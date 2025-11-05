@@ -13,17 +13,19 @@ describe("Create service use case", () => {
   });
 
   it("should be able to delete a service", async () => {
+
     await servicesRepository.create({
       id: "Service-01",
       description: "Service description example",
       name: "Service",
       price: 35.0,
     });
-    const { services } = await deleteServiceUseCase.execute({
+
+    const { service } = await deleteServiceUseCase.execute({
       id: "Service-01",
     });
 
-    expect(services).toHaveLength(0);
+    expect(service.id).toEqual(expect.any(String));
   });
 
   it("should not be able to delete a service that doesnt exists", async () => {

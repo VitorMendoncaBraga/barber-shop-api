@@ -1,6 +1,7 @@
 import { User } from "../../generated/prisma";
 import { UsersRepository } from "../../repositories/users-repository";
 import { ResourceNotFound } from "../errors/ResourceNotFound";
+import { UserAlreadyExists } from "../errors/UserAlreadyExists";
 
 interface EditUserServiceProfileRequest {
   id: string;
@@ -10,7 +11,12 @@ interface EditUserServiceProfileRequest {
 }
 
 interface EditUserServiceProfileResponse {
-  user: User;
+  userWithoutPassword: {
+    name: string,
+    email: string,
+    phone: string,
+    createdAt: Date
+  };
 }
 
 export class EditUserProfileService {
@@ -29,9 +35,20 @@ export class EditUserProfileService {
     if (!userExists) {
       throw new ResourceNotFound();
     }
+
+    const thisEmailAlreadyExists = await this.userRepository.findByEmail(email)
+
+    if(userExists.email != email && thisEmailAlreadyExists){
+      throw new UserAlreadyExists()
+    }
+
     const user = await this.userRepository.edit(id, name, email, phone);
+    const userWithoutPassword = {
+      ...user,
+      password: undefined
+    }
     return {
-      user,
+      userWithoutPassword
     };
   }
 }

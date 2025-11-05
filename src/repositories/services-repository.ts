@@ -7,5 +7,5 @@ export interface ServicesRepository{
     findMany(page: number, query?: string): Promise<Service[]>
     create({id,description,name,price}: Prisma.ServiceUncheckedCreateInput): Promise<Service>
     edit({id, description, name, price}: EditServiceUseCaseRequest): Promise<Service>
-    delete(id: string): Promise<Service[]>
+    delete(id: string): Promise<Service>
 }
